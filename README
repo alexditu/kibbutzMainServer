@@ -1,0 +1,2 @@
+# run server cmd
+mvn exec:java
