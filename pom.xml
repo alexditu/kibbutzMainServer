@@ -41,7 +41,6 @@
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.16.1</version>
-            <scope>test</scope>
         </dependency>
 
     </dependencies>
@@ -76,7 +75,9 @@
                         <argument>web</argument>
                         <argument>${project.build.finalName}</argument>
                     </arguments>
-                    <mainClass>research.bwsharingapp.server.Main</mainClass>
+                    <!--<mainClass>research.bwsharingapp.server.Main</mainClass>-->
+                    <mainClass>research.bwsharingapp.db.DatabaseConnection</mainClass>
+
                 </configuration>
             </plugin>
         </plugins>

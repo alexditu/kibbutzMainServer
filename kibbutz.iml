@@ -35,6 +35,6 @@
     <orderEntry type="library" name="Maven: io.grpc:grpc-protobuf-lite:1.4.0" level="project" />
     <orderEntry type="library" name="Maven: io.grpc:grpc-stub:1.4.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.4.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.xerial:sqlite-jdbc:3.16.1" level="project" />
+    <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.16.1" level="project" />
   </component>
 </module>
