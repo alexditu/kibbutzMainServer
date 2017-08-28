@@ -1,9 +1,7 @@
 package research.bwsharingapp.server;
 
 import io.grpc.stub.StreamObserver;
-import research.bwsharingapp.proto.kb.KibbutzGrpc;
-import research.bwsharingapp.proto.kb.RouterIOU;
-import research.bwsharingapp.proto.kb.RouterIOUReply;
+import research.bwsharingapp.proto.kb.*;
 
 import java.util.logging.Logger;
 
@@ -16,6 +14,15 @@ public class KibbutzServer extends KibbutzGrpc.KibbutzImplBase {
         printRouterIou(request);
 
         RouterIOUReply reply = RouterIOUReply.newBuilder().setStatusCode(0).setIsValid(true).build();
+        responseObserver.onNext(reply);
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void registerUser(UserData request, StreamObserver<RegisterUserReply> responseObserver) {
+        log.info("registering user: " + request.getUsername());
+
+        RegisterUserReply reply = KibbutzAL.registerUser(request);
         responseObserver.onNext(reply);
         responseObserver.onCompleted();
     }

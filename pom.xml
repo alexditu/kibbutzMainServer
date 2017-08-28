@@ -75,8 +75,8 @@
                         <argument>web</argument>
                         <argument>${project.build.finalName}</argument>
                     </arguments>
-                    <!--<mainClass>research.bwsharingapp.server.Main</mainClass>-->
-                    <mainClass>research.bwsharingapp.db.DatabaseConnection</mainClass>
+                    <mainClass>research.bwsharingapp.server.Main</mainClass>
+                    <!--<mainClass>research.bwsharingapp.db.DatabaseConnection</mainClass>-->
 
                 </configuration>
             </plugin>

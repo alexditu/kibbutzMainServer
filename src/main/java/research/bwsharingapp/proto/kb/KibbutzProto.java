@@ -15,6 +15,16 @@ public final class KibbutzProto {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_kibbutz_UserData_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_kibbutz_UserData_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_kibbutz_RegisterUserReply_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_kibbutz_RegisterUserReply_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_kibbutz_TrafficInfo_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -43,20 +53,25 @@ public final class KibbutzProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rkibbutz.proto\022\007kibbutz\"D\n\013TrafficInfo\022" +
-      "\014\n\004pkts\030\001 \001(\003\022\r\n\005bytes\030\002 \001(\003\022\013\n\003src\030\003 \001(" +
-      "\t\022\013\n\003dst\030\004 \001(\t\"~\n\tClientIOU\022 \n\002in\030\001 \001(\0132" +
-      "\024.kibbutz.TrafficInfo\022!\n\003out\030\002 \001(\0132\024.kib" +
-      "butz.TrafficInfo\022\016\n\006client\030\003 \001(\t\022\016\n\006serv" +
-      "er\030\004 \001(\t\022\014\n\004sign\030\005 \001(\t\"\205\001\n\tRouterIOU\022 \n\002" +
-      "in\030\001 \001(\0132\024.kibbutz.TrafficInfo\022!\n\003out\030\002 " +
-      "\001(\0132\024.kibbutz.TrafficInfo\022\014\n\004sign\030\003 \001(\t\022" +
-      "%\n\tclientIou\030\004 \001(\0132\022.kibbutz.ClientIOU\"5" +
-      "\n\016RouterIOUReply\022\017\n\007isValid\030\001 \001(\010\022\022\n\nsta",
-      "tusCode\030\002 \001(\0052I\n\007Kibbutz\022>\n\rsendRouterIO" +
-      "U\022\022.kibbutz.RouterIOU\032\027.kibbutz.RouterIO" +
-      "UReply\"\000B6\n\036research.bwsharingapp.proto." +
-      "kbB\014KibbutzProtoP\001\242\002\003HLWb\006proto3"
+      "\n\rkibbutz.proto\022\007kibbutz\">\n\010UserData\022\020\n\010" +
+      "username\030\001 \001(\t\022\020\n\010deviceId\030\002 \001(\t\022\016\n\006pubK" +
+      "ey\030\003 \001(\014\"7\n\021RegisterUserReply\022\016\n\006status\030" +
+      "\001 \001(\010\022\022\n\nstatusCode\030\002 \001(\005\"D\n\013TrafficInfo" +
+      "\022\014\n\004pkts\030\001 \001(\003\022\r\n\005bytes\030\002 \001(\003\022\013\n\003src\030\003 \001" +
+      "(\t\022\013\n\003dst\030\004 \001(\t\"~\n\tClientIOU\022 \n\002in\030\001 \001(\013" +
+      "2\024.kibbutz.TrafficInfo\022!\n\003out\030\002 \001(\0132\024.ki" +
+      "bbutz.TrafficInfo\022\016\n\006client\030\003 \001(\t\022\016\n\006ser" +
+      "ver\030\004 \001(\t\022\014\n\004sign\030\005 \001(\t\"\205\001\n\tRouterIOU\022 \n" +
+      "\002in\030\001 \001(\0132\024.kibbutz.TrafficInfo\022!\n\003out\030\002",
+      " \001(\0132\024.kibbutz.TrafficInfo\022\014\n\004sign\030\003 \001(\t" +
+      "\022%\n\tclientIou\030\004 \001(\0132\022.kibbutz.ClientIOU\"" +
+      "5\n\016RouterIOUReply\022\017\n\007isValid\030\001 \001(\010\022\022\n\nst" +
+      "atusCode\030\002 \001(\0052\212\001\n\007Kibbutz\022>\n\rsendRouter" +
+      "IOU\022\022.kibbutz.RouterIOU\032\027.kibbutz.Router" +
+      "IOUReply\"\000\022?\n\014registerUser\022\021.kibbutz.Use" +
+      "rData\032\032.kibbutz.RegisterUserReply\"\000B6\n\036r" +
+      "esearch.bwsharingapp.proto.kbB\014KibbutzPr" +
+      "otoP\001\242\002\003HLWb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -70,26 +85,38 @@ public final class KibbutzProto {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_kibbutz_TrafficInfo_descriptor =
+    internal_static_kibbutz_UserData_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_kibbutz_UserData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_kibbutz_UserData_descriptor,
+        new java.lang.String[] { "Username", "DeviceId", "PubKey", });
+    internal_static_kibbutz_RegisterUserReply_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_kibbutz_RegisterUserReply_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_kibbutz_RegisterUserReply_descriptor,
+        new java.lang.String[] { "Status", "StatusCode", });
+    internal_static_kibbutz_TrafficInfo_descriptor =
+      getDescriptor().getMessageTypes().get(2);
     internal_static_kibbutz_TrafficInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_kibbutz_TrafficInfo_descriptor,
         new java.lang.String[] { "Pkts", "Bytes", "Src", "Dst", });
     internal_static_kibbutz_ClientIOU_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_kibbutz_ClientIOU_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_kibbutz_ClientIOU_descriptor,
         new java.lang.String[] { "In", "Out", "Client", "Server", "Sign", });
     internal_static_kibbutz_RouterIOU_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_kibbutz_RouterIOU_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_kibbutz_RouterIOU_descriptor,
         new java.lang.String[] { "In", "Out", "Sign", "ClientIou", });
     internal_static_kibbutz_RouterIOUReply_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_kibbutz_RouterIOUReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_kibbutz_RouterIOUReply_descriptor,

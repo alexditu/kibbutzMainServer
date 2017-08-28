@@ -1,5 +1,6 @@
 package research.bwsharingapp.db;
 
+import java.io.ByteArrayInputStream;
 import java.sql.*;
 import java.util.logging.Logger;
 
@@ -24,7 +25,7 @@ public class DatabaseConnection {
         }
     }
 
-    public void createTableIOU() throws SQLException {
+    private void createTableIOU() throws SQLException {
         PreparedStatement pstmt = null;
         String CREATE_IOU_TABLE = "" +
                 "CREATE TABLE IF NOT EXISTS ious (\n" +
@@ -40,6 +41,21 @@ public class DatabaseConnection {
         pstmt = conn.prepareStatement(CREATE_IOU_TABLE);
         boolean ret = pstmt.execute();
         log.info("CREATE_IOU_TABLE returned: " + ret);
+    }
+
+    private void createTableUsers() throws SQLException {
+        PreparedStatement pstmt = null;
+        String CREATE_USERS_TABLE = "" +
+                "CREATE TABLE IF NOT EXISTS users (\n" +
+                " id integer PRIMARY KEY autoincrement,\n" +
+                " username text UNIQUE,\n" +
+                " device_id text,\n" +
+                " pub_key blob\n" +
+                " );";
+
+        pstmt = conn.prepareStatement(CREATE_USERS_TABLE);
+        boolean ret = pstmt.execute();
+        log.info("CREATE_USERS_TABLE returned: " + ret);
     }
 
     public void select() throws SQLException {
@@ -66,8 +82,41 @@ public class DatabaseConnection {
         log.info("'" + sql + "' ret: " + ret);
     }
 
+    public int insertUser(String username, String deviceId, byte[] keyPub) throws SQLException {
+        PreparedStatement pstmt = null;
+        String sql = "insert into USERS(username, device_id, pub_key) values(?, ?, ?)";
+
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, username);
+        pstmt.setString(2,deviceId);
+//        pstmt.setBlob(3, new ByteArrayInputStream(keyPub));
+        pstmt.setBytes(3, keyPub);
+
+        int ret = pstmt.executeUpdate();
+        log.info("'" + sql + "' ret: " + ret);
+
+        return ret;
+    }
+
+    public boolean userExists(String username) throws SQLException {
+        PreparedStatement pstmt = null;
+        String sql = "select * from USERS where username = ?";
+
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, username);
+
+        ResultSet rs  = pstmt.executeQuery();
+        if (rs.next()) {
+            log.info("user already exists: " + username);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void initTables() throws SQLException {
         createTableIOU();
+        createTableUsers();
     }
 
     public static void main(String args[]) {

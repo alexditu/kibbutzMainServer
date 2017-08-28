@@ -2,8 +2,10 @@ package research.bwsharingapp.server;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import research.bwsharingapp.db.DatabaseConnection;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Logger;
 
 public class Main {
@@ -49,6 +51,16 @@ public class Main {
      * Main launches the server from the command line.
      */
     public static void main(String[] args) throws IOException, InterruptedException {
+
+        DatabaseConnection db = new DatabaseConnection();
+        try {
+            db.connect();
+            db.initTables();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        db.disconnect();
+
         final Main server = new Main();
         server.start();
         server.blockUntilShutdown();
