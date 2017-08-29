@@ -34,25 +34,20 @@ public interface RouterIOUOrBuilder extends
   research.bwsharingapp.proto.kb.TrafficInfoOrBuilder getOutOrBuilder();
 
   /**
-   * <code>string sign = 3;</code>
+   * <code>.kibbutz.ClientIOUSigned clientIouSigned = 3;</code>
    */
-  java.lang.String getSign();
+  boolean hasClientIouSigned();
   /**
-   * <code>string sign = 3;</code>
+   * <code>.kibbutz.ClientIOUSigned clientIouSigned = 3;</code>
    */
-  com.google.protobuf.ByteString
-      getSignBytes();
+  research.bwsharingapp.proto.kb.ClientIOUSigned getClientIouSigned();
+  /**
+   * <code>.kibbutz.ClientIOUSigned clientIouSigned = 3;</code>
+   */
+  research.bwsharingapp.proto.kb.ClientIOUSignedOrBuilder getClientIouSignedOrBuilder();
 
   /**
-   * <code>.kibbutz.ClientIOU clientIou = 4;</code>
+   * <code>bytes nonce = 4;</code>
    */
-  boolean hasClientIou();
-  /**
-   * <code>.kibbutz.ClientIOU clientIou = 4;</code>
-   */
-  research.bwsharingapp.proto.kb.ClientIOU getClientIou();
-  /**
-   * <code>.kibbutz.ClientIOU clientIou = 4;</code>
-   */
-  research.bwsharingapp.proto.kb.ClientIOUOrBuilder getClientIouOrBuilder();
+  com.google.protobuf.ByteString getNonce();
 }

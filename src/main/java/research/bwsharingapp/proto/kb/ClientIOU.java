@@ -16,9 +16,9 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private ClientIOU() {
-    client_ = "";
+    clientUsername_ = "";
     server_ = "";
-    sign_ = "";
+    nonce_ = com.google.protobuf.ByteString.EMPTY;
   }
 
   @java.lang.Override
@@ -78,7 +78,7 @@ private static final long serialVersionUID = 0L;
           case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            client_ = s;
+            clientUsername_ = s;
             break;
           }
           case 34: {
@@ -88,9 +88,8 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 42: {
-            java.lang.String s = input.readStringRequireUtf8();
 
-            sign_ = s;
+            nonce_ = input.readBytes();
             break;
           }
         }
@@ -159,34 +158,34 @@ private static final long serialVersionUID = 0L;
     return getOut();
   }
 
-  public static final int CLIENT_FIELD_NUMBER = 3;
-  private volatile java.lang.Object client_;
+  public static final int CLIENTUSERNAME_FIELD_NUMBER = 3;
+  private volatile java.lang.Object clientUsername_;
   /**
-   * <code>string client = 3;</code>
+   * <code>string clientUsername = 3;</code>
    */
-  public java.lang.String getClient() {
-    java.lang.Object ref = client_;
+  public java.lang.String getClientUsername() {
+    java.lang.Object ref = clientUsername_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      client_ = s;
+      clientUsername_ = s;
       return s;
     }
   }
   /**
-   * <code>string client = 3;</code>
+   * <code>string clientUsername = 3;</code>
    */
   public com.google.protobuf.ByteString
-      getClientBytes() {
-    java.lang.Object ref = client_;
+      getClientUsernameBytes() {
+    java.lang.Object ref = clientUsername_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      client_ = b;
+      clientUsername_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -227,38 +226,13 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int SIGN_FIELD_NUMBER = 5;
-  private volatile java.lang.Object sign_;
+  public static final int NONCE_FIELD_NUMBER = 5;
+  private com.google.protobuf.ByteString nonce_;
   /**
-   * <code>string sign = 5;</code>
+   * <code>bytes nonce = 5;</code>
    */
-  public java.lang.String getSign() {
-    java.lang.Object ref = sign_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      sign_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string sign = 5;</code>
-   */
-  public com.google.protobuf.ByteString
-      getSignBytes() {
-    java.lang.Object ref = sign_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      sign_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public com.google.protobuf.ByteString getNonce() {
+    return nonce_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -279,14 +253,14 @@ private static final long serialVersionUID = 0L;
     if (out_ != null) {
       output.writeMessage(2, getOut());
     }
-    if (!getClientBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, client_);
+    if (!getClientUsernameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, clientUsername_);
     }
     if (!getServerBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, server_);
     }
-    if (!getSignBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, sign_);
+    if (!nonce_.isEmpty()) {
+      output.writeBytes(5, nonce_);
     }
     unknownFields.writeTo(output);
   }
@@ -304,14 +278,15 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, getOut());
     }
-    if (!getClientBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, client_);
+    if (!getClientUsernameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, clientUsername_);
     }
     if (!getServerBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, server_);
     }
-    if (!getSignBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, sign_);
+    if (!nonce_.isEmpty()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBytesSize(5, nonce_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -339,12 +314,12 @@ private static final long serialVersionUID = 0L;
       result = result && getOut()
           .equals(other.getOut());
     }
-    result = result && getClient()
-        .equals(other.getClient());
+    result = result && getClientUsername()
+        .equals(other.getClientUsername());
     result = result && getServer()
         .equals(other.getServer());
-    result = result && getSign()
-        .equals(other.getSign());
+    result = result && getNonce()
+        .equals(other.getNonce());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -364,12 +339,12 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + OUT_FIELD_NUMBER;
       hash = (53 * hash) + getOut().hashCode();
     }
-    hash = (37 * hash) + CLIENT_FIELD_NUMBER;
-    hash = (53 * hash) + getClient().hashCode();
+    hash = (37 * hash) + CLIENTUSERNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getClientUsername().hashCode();
     hash = (37 * hash) + SERVER_FIELD_NUMBER;
     hash = (53 * hash) + getServer().hashCode();
-    hash = (37 * hash) + SIGN_FIELD_NUMBER;
-    hash = (53 * hash) + getSign().hashCode();
+    hash = (37 * hash) + NONCE_FIELD_NUMBER;
+    hash = (53 * hash) + getNonce().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -511,11 +486,11 @@ private static final long serialVersionUID = 0L;
         out_ = null;
         outBuilder_ = null;
       }
-      client_ = "";
+      clientUsername_ = "";
 
       server_ = "";
 
-      sign_ = "";
+      nonce_ = com.google.protobuf.ByteString.EMPTY;
 
       return this;
     }
@@ -549,9 +524,9 @@ private static final long serialVersionUID = 0L;
       } else {
         result.out_ = outBuilder_.build();
       }
-      result.client_ = client_;
+      result.clientUsername_ = clientUsername_;
       result.server_ = server_;
-      result.sign_ = sign_;
+      result.nonce_ = nonce_;
       onBuilt();
       return result;
     }
@@ -599,17 +574,16 @@ private static final long serialVersionUID = 0L;
       if (other.hasOut()) {
         mergeOut(other.getOut());
       }
-      if (!other.getClient().isEmpty()) {
-        client_ = other.client_;
+      if (!other.getClientUsername().isEmpty()) {
+        clientUsername_ = other.clientUsername_;
         onChanged();
       }
       if (!other.getServer().isEmpty()) {
         server_ = other.server_;
         onChanged();
       }
-      if (!other.getSign().isEmpty()) {
-        sign_ = other.sign_;
-        onChanged();
+      if (other.getNonce() != com.google.protobuf.ByteString.EMPTY) {
+        setNonce(other.getNonce());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -872,71 +846,71 @@ private static final long serialVersionUID = 0L;
       return outBuilder_;
     }
 
-    private java.lang.Object client_ = "";
+    private java.lang.Object clientUsername_ = "";
     /**
-     * <code>string client = 3;</code>
+     * <code>string clientUsername = 3;</code>
      */
-    public java.lang.String getClient() {
-      java.lang.Object ref = client_;
+    public java.lang.String getClientUsername() {
+      java.lang.Object ref = clientUsername_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        client_ = s;
+        clientUsername_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string client = 3;</code>
+     * <code>string clientUsername = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getClientBytes() {
-      java.lang.Object ref = client_;
+        getClientUsernameBytes() {
+      java.lang.Object ref = clientUsername_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        client_ = b;
+        clientUsername_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string client = 3;</code>
+     * <code>string clientUsername = 3;</code>
      */
-    public Builder setClient(
+    public Builder setClientUsername(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      client_ = value;
+      clientUsername_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string client = 3;</code>
+     * <code>string clientUsername = 3;</code>
      */
-    public Builder clearClient() {
+    public Builder clearClientUsername() {
       
-      client_ = getDefaultInstance().getClient();
+      clientUsername_ = getDefaultInstance().getClientUsername();
       onChanged();
       return this;
     }
     /**
-     * <code>string client = 3;</code>
+     * <code>string clientUsername = 3;</code>
      */
-    public Builder setClientBytes(
+    public Builder setClientUsernameBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      client_ = value;
+      clientUsername_ = value;
       onChanged();
       return this;
     }
@@ -1010,71 +984,31 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object sign_ = "";
+    private com.google.protobuf.ByteString nonce_ = com.google.protobuf.ByteString.EMPTY;
     /**
-     * <code>string sign = 5;</code>
+     * <code>bytes nonce = 5;</code>
      */
-    public java.lang.String getSign() {
-      java.lang.Object ref = sign_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        sign_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public com.google.protobuf.ByteString getNonce() {
+      return nonce_;
     }
     /**
-     * <code>string sign = 5;</code>
+     * <code>bytes nonce = 5;</code>
      */
-    public com.google.protobuf.ByteString
-        getSignBytes() {
-      java.lang.Object ref = sign_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        sign_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string sign = 5;</code>
-     */
-    public Builder setSign(
-        java.lang.String value) {
+    public Builder setNonce(com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      sign_ = value;
+      nonce_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string sign = 5;</code>
+     * <code>bytes nonce = 5;</code>
      */
-    public Builder clearSign() {
+    public Builder clearNonce() {
       
-      sign_ = getDefaultInstance().getSign();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string sign = 5;</code>
-     */
-    public Builder setSignBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      sign_ = value;
+      nonce_ = getDefaultInstance().getNonce();
       onChanged();
       return this;
     }

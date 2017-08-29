@@ -1,5 +1,7 @@
 package research.bwsharingapp.db;
 
+import research.bwsharingapp.db.entities.User;
+
 import java.io.ByteArrayInputStream;
 import java.sql.*;
 import java.util.logging.Logger;
@@ -112,6 +114,24 @@ public class DatabaseConnection {
         } else {
             return false;
         }
+    }
+
+    public User getUserIfExists(String username) throws SQLException {
+        User user = null;
+        PreparedStatement pstmt = null;
+        String sql = "select id, username, device_id, pub_key from USERS where username = ?";
+
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, username);
+
+        ResultSet rs  = pstmt.executeQuery();
+        if (rs.next()) {
+            log.info("user exists: " + username);
+            user = new User(rs);
+        } else {
+            log.info("user does not exists: " + username);
+        }
+        return user;
     }
 
     public void initTables() throws SQLException {

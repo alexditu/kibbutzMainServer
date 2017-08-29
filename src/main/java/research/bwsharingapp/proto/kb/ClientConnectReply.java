@@ -4,26 +4,22 @@
 package research.bwsharingapp.proto.kb;
 
 /**
- * <pre>
- * rpc sendRouterIOU -------------------------------------------------------------------------------
- * </pre>
- *
- * Protobuf type {@code kibbutz.TrafficInfo}
+ * Protobuf type {@code kibbutz.ClientConnectReply}
  */
-public  final class TrafficInfo extends
+public  final class ClientConnectReply extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:kibbutz.TrafficInfo)
-    TrafficInfoOrBuilder {
+    // @@protoc_insertion_point(message_implements:kibbutz.ClientConnectReply)
+    ClientConnectReplyOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use TrafficInfo.newBuilder() to construct.
-  private TrafficInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use ClientConnectReply.newBuilder() to construct.
+  private ClientConnectReply(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private TrafficInfo() {
-    pkts_ = 0L;
-    bytes_ = 0L;
-    src_ = "";
-    dst_ = "";
+  private ClientConnectReply() {
+    clientExists_ = false;
+    statusCode_ = 0;
+    statusMsg_ = "";
+    nonce_ = com.google.protobuf.ByteString.EMPTY;
   }
 
   @java.lang.Override
@@ -31,7 +27,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private TrafficInfo(
+  private ClientConnectReply(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -56,24 +52,23 @@ private static final long serialVersionUID = 0L;
           }
           case 8: {
 
-            pkts_ = input.readInt64();
+            clientExists_ = input.readBool();
             break;
           }
           case 16: {
 
-            bytes_ = input.readInt64();
+            statusCode_ = input.readInt32();
             break;
           }
           case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            src_ = s;
+            statusMsg_ = s;
             break;
           }
           case 34: {
-            java.lang.String s = input.readStringRequireUtf8();
 
-            dst_ = s;
+            nonce_ = input.readBytes();
             break;
           }
         }
@@ -90,100 +85,75 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_TrafficInfo_descriptor;
+    return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_ClientConnectReply_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_TrafficInfo_fieldAccessorTable
+    return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_ClientConnectReply_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            research.bwsharingapp.proto.kb.TrafficInfo.class, research.bwsharingapp.proto.kb.TrafficInfo.Builder.class);
+            research.bwsharingapp.proto.kb.ClientConnectReply.class, research.bwsharingapp.proto.kb.ClientConnectReply.Builder.class);
   }
 
-  public static final int PKTS_FIELD_NUMBER = 1;
-  private long pkts_;
+  public static final int CLIENTEXISTS_FIELD_NUMBER = 1;
+  private boolean clientExists_;
   /**
-   * <code>int64 pkts = 1;</code>
+   * <code>bool clientExists = 1;</code>
    */
-  public long getPkts() {
-    return pkts_;
+  public boolean getClientExists() {
+    return clientExists_;
   }
 
-  public static final int BYTES_FIELD_NUMBER = 2;
-  private long bytes_;
+  public static final int STATUSCODE_FIELD_NUMBER = 2;
+  private int statusCode_;
   /**
-   * <code>int64 bytes = 2;</code>
+   * <code>int32 statusCode = 2;</code>
    */
-  public long getBytes() {
-    return bytes_;
+  public int getStatusCode() {
+    return statusCode_;
   }
 
-  public static final int SRC_FIELD_NUMBER = 3;
-  private volatile java.lang.Object src_;
+  public static final int STATUSMSG_FIELD_NUMBER = 3;
+  private volatile java.lang.Object statusMsg_;
   /**
-   * <code>string src = 3;</code>
+   * <code>string statusMsg = 3;</code>
    */
-  public java.lang.String getSrc() {
-    java.lang.Object ref = src_;
+  public java.lang.String getStatusMsg() {
+    java.lang.Object ref = statusMsg_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      src_ = s;
+      statusMsg_ = s;
       return s;
     }
   }
   /**
-   * <code>string src = 3;</code>
+   * <code>string statusMsg = 3;</code>
    */
   public com.google.protobuf.ByteString
-      getSrcBytes() {
-    java.lang.Object ref = src_;
+      getStatusMsgBytes() {
+    java.lang.Object ref = statusMsg_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      src_ = b;
+      statusMsg_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int DST_FIELD_NUMBER = 4;
-  private volatile java.lang.Object dst_;
+  public static final int NONCE_FIELD_NUMBER = 4;
+  private com.google.protobuf.ByteString nonce_;
   /**
-   * <code>string dst = 4;</code>
+   * <code>bytes nonce = 4;</code>
    */
-  public java.lang.String getDst() {
-    java.lang.Object ref = dst_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      dst_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string dst = 4;</code>
-   */
-  public com.google.protobuf.ByteString
-      getDstBytes() {
-    java.lang.Object ref = dst_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      dst_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public com.google.protobuf.ByteString getNonce() {
+    return nonce_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -198,17 +168,17 @@ private static final long serialVersionUID = 0L;
 
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (pkts_ != 0L) {
-      output.writeInt64(1, pkts_);
+    if (clientExists_ != false) {
+      output.writeBool(1, clientExists_);
     }
-    if (bytes_ != 0L) {
-      output.writeInt64(2, bytes_);
+    if (statusCode_ != 0) {
+      output.writeInt32(2, statusCode_);
     }
-    if (!getSrcBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, src_);
+    if (!getStatusMsgBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, statusMsg_);
     }
-    if (!getDstBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, dst_);
+    if (!nonce_.isEmpty()) {
+      output.writeBytes(4, nonce_);
     }
     unknownFields.writeTo(output);
   }
@@ -218,19 +188,20 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (pkts_ != 0L) {
+    if (clientExists_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, pkts_);
+        .computeBoolSize(1, clientExists_);
     }
-    if (bytes_ != 0L) {
+    if (statusCode_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(2, bytes_);
+        .computeInt32Size(2, statusCode_);
     }
-    if (!getSrcBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, src_);
+    if (!getStatusMsgBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, statusMsg_);
     }
-    if (!getDstBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, dst_);
+    if (!nonce_.isEmpty()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBytesSize(4, nonce_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -242,20 +213,20 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof research.bwsharingapp.proto.kb.TrafficInfo)) {
+    if (!(obj instanceof research.bwsharingapp.proto.kb.ClientConnectReply)) {
       return super.equals(obj);
     }
-    research.bwsharingapp.proto.kb.TrafficInfo other = (research.bwsharingapp.proto.kb.TrafficInfo) obj;
+    research.bwsharingapp.proto.kb.ClientConnectReply other = (research.bwsharingapp.proto.kb.ClientConnectReply) obj;
 
     boolean result = true;
-    result = result && (getPkts()
-        == other.getPkts());
-    result = result && (getBytes()
-        == other.getBytes());
-    result = result && getSrc()
-        .equals(other.getSrc());
-    result = result && getDst()
-        .equals(other.getDst());
+    result = result && (getClientExists()
+        == other.getClientExists());
+    result = result && (getStatusCode()
+        == other.getStatusCode());
+    result = result && getStatusMsg()
+        .equals(other.getStatusMsg());
+    result = result && getNonce()
+        .equals(other.getNonce());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -267,84 +238,83 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + PKTS_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getPkts());
-    hash = (37 * hash) + BYTES_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getBytes());
-    hash = (37 * hash) + SRC_FIELD_NUMBER;
-    hash = (53 * hash) + getSrc().hashCode();
-    hash = (37 * hash) + DST_FIELD_NUMBER;
-    hash = (53 * hash) + getDst().hashCode();
+    hash = (37 * hash) + CLIENTEXISTS_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getClientExists());
+    hash = (37 * hash) + STATUSCODE_FIELD_NUMBER;
+    hash = (53 * hash) + getStatusCode();
+    hash = (37 * hash) + STATUSMSG_FIELD_NUMBER;
+    hash = (53 * hash) + getStatusMsg().hashCode();
+    hash = (37 * hash) + NONCE_FIELD_NUMBER;
+    hash = (53 * hash) + getNonce().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(
+  public static research.bwsharingapp.proto.kb.ClientConnectReply parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(
+  public static research.bwsharingapp.proto.kb.ClientConnectReply parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(
+  public static research.bwsharingapp.proto.kb.ClientConnectReply parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(
+  public static research.bwsharingapp.proto.kb.ClientConnectReply parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(byte[] data)
+  public static research.bwsharingapp.proto.kb.ClientConnectReply parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(
+  public static research.bwsharingapp.proto.kb.ClientConnectReply parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(java.io.InputStream input)
+  public static research.bwsharingapp.proto.kb.ClientConnectReply parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(
+  public static research.bwsharingapp.proto.kb.ClientConnectReply parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseDelimitedFrom(java.io.InputStream input)
+  public static research.bwsharingapp.proto.kb.ClientConnectReply parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseDelimitedFrom(
+  public static research.bwsharingapp.proto.kb.ClientConnectReply parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(
+  public static research.bwsharingapp.proto.kb.ClientConnectReply parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(
+  public static research.bwsharingapp.proto.kb.ClientConnectReply parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -356,7 +326,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(research.bwsharingapp.proto.kb.TrafficInfo prototype) {
+  public static Builder newBuilder(research.bwsharingapp.proto.kb.ClientConnectReply prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -371,29 +341,25 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * rpc sendRouterIOU -------------------------------------------------------------------------------
-   * </pre>
-   *
-   * Protobuf type {@code kibbutz.TrafficInfo}
+   * Protobuf type {@code kibbutz.ClientConnectReply}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:kibbutz.TrafficInfo)
-      research.bwsharingapp.proto.kb.TrafficInfoOrBuilder {
+      // @@protoc_insertion_point(builder_implements:kibbutz.ClientConnectReply)
+      research.bwsharingapp.proto.kb.ClientConnectReplyOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_TrafficInfo_descriptor;
+      return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_ClientConnectReply_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_TrafficInfo_fieldAccessorTable
+      return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_ClientConnectReply_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              research.bwsharingapp.proto.kb.TrafficInfo.class, research.bwsharingapp.proto.kb.TrafficInfo.Builder.class);
+              research.bwsharingapp.proto.kb.ClientConnectReply.class, research.bwsharingapp.proto.kb.ClientConnectReply.Builder.class);
     }
 
-    // Construct using research.bwsharingapp.proto.kb.TrafficInfo.newBuilder()
+    // Construct using research.bwsharingapp.proto.kb.ClientConnectReply.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -410,40 +376,40 @@ private static final long serialVersionUID = 0L;
     }
     public Builder clear() {
       super.clear();
-      pkts_ = 0L;
+      clientExists_ = false;
 
-      bytes_ = 0L;
+      statusCode_ = 0;
 
-      src_ = "";
+      statusMsg_ = "";
 
-      dst_ = "";
+      nonce_ = com.google.protobuf.ByteString.EMPTY;
 
       return this;
     }
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_TrafficInfo_descriptor;
+      return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_ClientConnectReply_descriptor;
     }
 
-    public research.bwsharingapp.proto.kb.TrafficInfo getDefaultInstanceForType() {
-      return research.bwsharingapp.proto.kb.TrafficInfo.getDefaultInstance();
+    public research.bwsharingapp.proto.kb.ClientConnectReply getDefaultInstanceForType() {
+      return research.bwsharingapp.proto.kb.ClientConnectReply.getDefaultInstance();
     }
 
-    public research.bwsharingapp.proto.kb.TrafficInfo build() {
-      research.bwsharingapp.proto.kb.TrafficInfo result = buildPartial();
+    public research.bwsharingapp.proto.kb.ClientConnectReply build() {
+      research.bwsharingapp.proto.kb.ClientConnectReply result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
       return result;
     }
 
-    public research.bwsharingapp.proto.kb.TrafficInfo buildPartial() {
-      research.bwsharingapp.proto.kb.TrafficInfo result = new research.bwsharingapp.proto.kb.TrafficInfo(this);
-      result.pkts_ = pkts_;
-      result.bytes_ = bytes_;
-      result.src_ = src_;
-      result.dst_ = dst_;
+    public research.bwsharingapp.proto.kb.ClientConnectReply buildPartial() {
+      research.bwsharingapp.proto.kb.ClientConnectReply result = new research.bwsharingapp.proto.kb.ClientConnectReply(this);
+      result.clientExists_ = clientExists_;
+      result.statusCode_ = statusCode_;
+      result.statusMsg_ = statusMsg_;
+      result.nonce_ = nonce_;
       onBuilt();
       return result;
     }
@@ -475,29 +441,28 @@ private static final long serialVersionUID = 0L;
       return (Builder) super.addRepeatedField(field, value);
     }
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof research.bwsharingapp.proto.kb.TrafficInfo) {
-        return mergeFrom((research.bwsharingapp.proto.kb.TrafficInfo)other);
+      if (other instanceof research.bwsharingapp.proto.kb.ClientConnectReply) {
+        return mergeFrom((research.bwsharingapp.proto.kb.ClientConnectReply)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(research.bwsharingapp.proto.kb.TrafficInfo other) {
-      if (other == research.bwsharingapp.proto.kb.TrafficInfo.getDefaultInstance()) return this;
-      if (other.getPkts() != 0L) {
-        setPkts(other.getPkts());
+    public Builder mergeFrom(research.bwsharingapp.proto.kb.ClientConnectReply other) {
+      if (other == research.bwsharingapp.proto.kb.ClientConnectReply.getDefaultInstance()) return this;
+      if (other.getClientExists() != false) {
+        setClientExists(other.getClientExists());
       }
-      if (other.getBytes() != 0L) {
-        setBytes(other.getBytes());
+      if (other.getStatusCode() != 0) {
+        setStatusCode(other.getStatusCode());
       }
-      if (!other.getSrc().isEmpty()) {
-        src_ = other.src_;
+      if (!other.getStatusMsg().isEmpty()) {
+        statusMsg_ = other.statusMsg_;
         onChanged();
       }
-      if (!other.getDst().isEmpty()) {
-        dst_ = other.dst_;
-        onChanged();
+      if (other.getNonce() != com.google.protobuf.ByteString.EMPTY) {
+        setNonce(other.getNonce());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -512,11 +477,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      research.bwsharingapp.proto.kb.TrafficInfo parsedMessage = null;
+      research.bwsharingapp.proto.kb.ClientConnectReply parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (research.bwsharingapp.proto.kb.TrafficInfo) e.getUnfinishedMessage();
+        parsedMessage = (research.bwsharingapp.proto.kb.ClientConnectReply) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -526,192 +491,152 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long pkts_ ;
+    private boolean clientExists_ ;
     /**
-     * <code>int64 pkts = 1;</code>
+     * <code>bool clientExists = 1;</code>
      */
-    public long getPkts() {
-      return pkts_;
+    public boolean getClientExists() {
+      return clientExists_;
     }
     /**
-     * <code>int64 pkts = 1;</code>
+     * <code>bool clientExists = 1;</code>
      */
-    public Builder setPkts(long value) {
+    public Builder setClientExists(boolean value) {
       
-      pkts_ = value;
+      clientExists_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int64 pkts = 1;</code>
+     * <code>bool clientExists = 1;</code>
      */
-    public Builder clearPkts() {
+    public Builder clearClientExists() {
       
-      pkts_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private long bytes_ ;
-    /**
-     * <code>int64 bytes = 2;</code>
-     */
-    public long getBytes() {
-      return bytes_;
-    }
-    /**
-     * <code>int64 bytes = 2;</code>
-     */
-    public Builder setBytes(long value) {
-      
-      bytes_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int64 bytes = 2;</code>
-     */
-    public Builder clearBytes() {
-      
-      bytes_ = 0L;
+      clientExists_ = false;
       onChanged();
       return this;
     }
 
-    private java.lang.Object src_ = "";
+    private int statusCode_ ;
     /**
-     * <code>string src = 3;</code>
+     * <code>int32 statusCode = 2;</code>
      */
-    public java.lang.String getSrc() {
-      java.lang.Object ref = src_;
+    public int getStatusCode() {
+      return statusCode_;
+    }
+    /**
+     * <code>int32 statusCode = 2;</code>
+     */
+    public Builder setStatusCode(int value) {
+      
+      statusCode_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 statusCode = 2;</code>
+     */
+    public Builder clearStatusCode() {
+      
+      statusCode_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object statusMsg_ = "";
+    /**
+     * <code>string statusMsg = 3;</code>
+     */
+    public java.lang.String getStatusMsg() {
+      java.lang.Object ref = statusMsg_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        src_ = s;
+        statusMsg_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string src = 3;</code>
+     * <code>string statusMsg = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getSrcBytes() {
-      java.lang.Object ref = src_;
+        getStatusMsgBytes() {
+      java.lang.Object ref = statusMsg_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        src_ = b;
+        statusMsg_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string src = 3;</code>
+     * <code>string statusMsg = 3;</code>
      */
-    public Builder setSrc(
+    public Builder setStatusMsg(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      src_ = value;
+      statusMsg_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string src = 3;</code>
+     * <code>string statusMsg = 3;</code>
      */
-    public Builder clearSrc() {
+    public Builder clearStatusMsg() {
       
-      src_ = getDefaultInstance().getSrc();
+      statusMsg_ = getDefaultInstance().getStatusMsg();
       onChanged();
       return this;
     }
     /**
-     * <code>string src = 3;</code>
+     * <code>string statusMsg = 3;</code>
      */
-    public Builder setSrcBytes(
+    public Builder setStatusMsgBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      src_ = value;
+      statusMsg_ = value;
       onChanged();
       return this;
     }
 
-    private java.lang.Object dst_ = "";
+    private com.google.protobuf.ByteString nonce_ = com.google.protobuf.ByteString.EMPTY;
     /**
-     * <code>string dst = 4;</code>
+     * <code>bytes nonce = 4;</code>
      */
-    public java.lang.String getDst() {
-      java.lang.Object ref = dst_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        dst_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public com.google.protobuf.ByteString getNonce() {
+      return nonce_;
     }
     /**
-     * <code>string dst = 4;</code>
+     * <code>bytes nonce = 4;</code>
      */
-    public com.google.protobuf.ByteString
-        getDstBytes() {
-      java.lang.Object ref = dst_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        dst_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string dst = 4;</code>
-     */
-    public Builder setDst(
-        java.lang.String value) {
+    public Builder setNonce(com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      dst_ = value;
+      nonce_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string dst = 4;</code>
+     * <code>bytes nonce = 4;</code>
      */
-    public Builder clearDst() {
+    public Builder clearNonce() {
       
-      dst_ = getDefaultInstance().getDst();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string dst = 4;</code>
-     */
-    public Builder setDstBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      dst_ = value;
+      nonce_ = getDefaultInstance().getNonce();
       onChanged();
       return this;
     }
@@ -726,39 +651,39 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:kibbutz.TrafficInfo)
+    // @@protoc_insertion_point(builder_scope:kibbutz.ClientConnectReply)
   }
 
-  // @@protoc_insertion_point(class_scope:kibbutz.TrafficInfo)
-  private static final research.bwsharingapp.proto.kb.TrafficInfo DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:kibbutz.ClientConnectReply)
+  private static final research.bwsharingapp.proto.kb.ClientConnectReply DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new research.bwsharingapp.proto.kb.TrafficInfo();
+    DEFAULT_INSTANCE = new research.bwsharingapp.proto.kb.ClientConnectReply();
   }
 
-  public static research.bwsharingapp.proto.kb.TrafficInfo getDefaultInstance() {
+  public static research.bwsharingapp.proto.kb.ClientConnectReply getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<TrafficInfo>
-      PARSER = new com.google.protobuf.AbstractParser<TrafficInfo>() {
-    public TrafficInfo parsePartialFrom(
+  private static final com.google.protobuf.Parser<ClientConnectReply>
+      PARSER = new com.google.protobuf.AbstractParser<ClientConnectReply>() {
+    public ClientConnectReply parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TrafficInfo(input, extensionRegistry);
+        return new ClientConnectReply(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<TrafficInfo> parser() {
+  public static com.google.protobuf.Parser<ClientConnectReply> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<TrafficInfo> getParserForType() {
+  public com.google.protobuf.Parser<ClientConnectReply> getParserForType() {
     return PARSER;
   }
 
-  public research.bwsharingapp.proto.kb.TrafficInfo getDefaultInstanceForType() {
+  public research.bwsharingapp.proto.kb.ClientConnectReply getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

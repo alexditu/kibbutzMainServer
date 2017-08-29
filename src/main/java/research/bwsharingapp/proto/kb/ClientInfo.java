@@ -5,25 +5,24 @@ package research.bwsharingapp.proto.kb;
 
 /**
  * <pre>
- * rpc sendRouterIOU -------------------------------------------------------------------------------
+ * rpc clientConnect -------------------------------------------------------------------------------
  * </pre>
  *
- * Protobuf type {@code kibbutz.TrafficInfo}
+ * Protobuf type {@code kibbutz.ClientInfo}
  */
-public  final class TrafficInfo extends
+public  final class ClientInfo extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:kibbutz.TrafficInfo)
-    TrafficInfoOrBuilder {
+    // @@protoc_insertion_point(message_implements:kibbutz.ClientInfo)
+    ClientInfoOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use TrafficInfo.newBuilder() to construct.
-  private TrafficInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use ClientInfo.newBuilder() to construct.
+  private ClientInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private TrafficInfo() {
-    pkts_ = 0L;
-    bytes_ = 0L;
-    src_ = "";
-    dst_ = "";
+  private ClientInfo() {
+    clientUsername_ = "";
+    clientPubKey_ = com.google.protobuf.ByteString.EMPTY;
+    routerUsername_ = "";
   }
 
   @java.lang.Override
@@ -31,7 +30,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private TrafficInfo(
+  private ClientInfo(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -54,26 +53,21 @@ private static final long serialVersionUID = 0L;
             }
             break;
           }
-          case 8: {
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            pkts_ = input.readInt64();
+            clientUsername_ = s;
             break;
           }
-          case 16: {
+          case 18: {
 
-            bytes_ = input.readInt64();
+            clientPubKey_ = input.readBytes();
             break;
           }
           case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            src_ = s;
-            break;
-          }
-          case 34: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            dst_ = s;
+            routerUsername_ = s;
             break;
           }
         }
@@ -90,96 +84,87 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_TrafficInfo_descriptor;
+    return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_ClientInfo_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_TrafficInfo_fieldAccessorTable
+    return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_ClientInfo_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            research.bwsharingapp.proto.kb.TrafficInfo.class, research.bwsharingapp.proto.kb.TrafficInfo.Builder.class);
+            research.bwsharingapp.proto.kb.ClientInfo.class, research.bwsharingapp.proto.kb.ClientInfo.Builder.class);
   }
 
-  public static final int PKTS_FIELD_NUMBER = 1;
-  private long pkts_;
+  public static final int CLIENTUSERNAME_FIELD_NUMBER = 1;
+  private volatile java.lang.Object clientUsername_;
   /**
-   * <code>int64 pkts = 1;</code>
+   * <code>string clientUsername = 1;</code>
    */
-  public long getPkts() {
-    return pkts_;
-  }
-
-  public static final int BYTES_FIELD_NUMBER = 2;
-  private long bytes_;
-  /**
-   * <code>int64 bytes = 2;</code>
-   */
-  public long getBytes() {
-    return bytes_;
-  }
-
-  public static final int SRC_FIELD_NUMBER = 3;
-  private volatile java.lang.Object src_;
-  /**
-   * <code>string src = 3;</code>
-   */
-  public java.lang.String getSrc() {
-    java.lang.Object ref = src_;
+  public java.lang.String getClientUsername() {
+    java.lang.Object ref = clientUsername_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      src_ = s;
+      clientUsername_ = s;
       return s;
     }
   }
   /**
-   * <code>string src = 3;</code>
+   * <code>string clientUsername = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getSrcBytes() {
-    java.lang.Object ref = src_;
+      getClientUsernameBytes() {
+    java.lang.Object ref = clientUsername_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      src_ = b;
+      clientUsername_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int DST_FIELD_NUMBER = 4;
-  private volatile java.lang.Object dst_;
+  public static final int CLIENTPUBKEY_FIELD_NUMBER = 2;
+  private com.google.protobuf.ByteString clientPubKey_;
   /**
-   * <code>string dst = 4;</code>
+   * <code>bytes clientPubKey = 2;</code>
    */
-  public java.lang.String getDst() {
-    java.lang.Object ref = dst_;
+  public com.google.protobuf.ByteString getClientPubKey() {
+    return clientPubKey_;
+  }
+
+  public static final int ROUTERUSERNAME_FIELD_NUMBER = 3;
+  private volatile java.lang.Object routerUsername_;
+  /**
+   * <code>string routerUsername = 3;</code>
+   */
+  public java.lang.String getRouterUsername() {
+    java.lang.Object ref = routerUsername_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      dst_ = s;
+      routerUsername_ = s;
       return s;
     }
   }
   /**
-   * <code>string dst = 4;</code>
+   * <code>string routerUsername = 3;</code>
    */
   public com.google.protobuf.ByteString
-      getDstBytes() {
-    java.lang.Object ref = dst_;
+      getRouterUsernameBytes() {
+    java.lang.Object ref = routerUsername_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      dst_ = b;
+      routerUsername_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -198,17 +183,14 @@ private static final long serialVersionUID = 0L;
 
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (pkts_ != 0L) {
-      output.writeInt64(1, pkts_);
+    if (!getClientUsernameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, clientUsername_);
     }
-    if (bytes_ != 0L) {
-      output.writeInt64(2, bytes_);
+    if (!clientPubKey_.isEmpty()) {
+      output.writeBytes(2, clientPubKey_);
     }
-    if (!getSrcBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, src_);
-    }
-    if (!getDstBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, dst_);
+    if (!getRouterUsernameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, routerUsername_);
     }
     unknownFields.writeTo(output);
   }
@@ -218,19 +200,15 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (pkts_ != 0L) {
+    if (!getClientUsernameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, clientUsername_);
+    }
+    if (!clientPubKey_.isEmpty()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, pkts_);
+        .computeBytesSize(2, clientPubKey_);
     }
-    if (bytes_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(2, bytes_);
-    }
-    if (!getSrcBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, src_);
-    }
-    if (!getDstBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, dst_);
+    if (!getRouterUsernameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, routerUsername_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -242,20 +220,18 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof research.bwsharingapp.proto.kb.TrafficInfo)) {
+    if (!(obj instanceof research.bwsharingapp.proto.kb.ClientInfo)) {
       return super.equals(obj);
     }
-    research.bwsharingapp.proto.kb.TrafficInfo other = (research.bwsharingapp.proto.kb.TrafficInfo) obj;
+    research.bwsharingapp.proto.kb.ClientInfo other = (research.bwsharingapp.proto.kb.ClientInfo) obj;
 
     boolean result = true;
-    result = result && (getPkts()
-        == other.getPkts());
-    result = result && (getBytes()
-        == other.getBytes());
-    result = result && getSrc()
-        .equals(other.getSrc());
-    result = result && getDst()
-        .equals(other.getDst());
+    result = result && getClientUsername()
+        .equals(other.getClientUsername());
+    result = result && getClientPubKey()
+        .equals(other.getClientPubKey());
+    result = result && getRouterUsername()
+        .equals(other.getRouterUsername());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -267,84 +243,80 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + PKTS_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getPkts());
-    hash = (37 * hash) + BYTES_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getBytes());
-    hash = (37 * hash) + SRC_FIELD_NUMBER;
-    hash = (53 * hash) + getSrc().hashCode();
-    hash = (37 * hash) + DST_FIELD_NUMBER;
-    hash = (53 * hash) + getDst().hashCode();
+    hash = (37 * hash) + CLIENTUSERNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getClientUsername().hashCode();
+    hash = (37 * hash) + CLIENTPUBKEY_FIELD_NUMBER;
+    hash = (53 * hash) + getClientPubKey().hashCode();
+    hash = (37 * hash) + ROUTERUSERNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getRouterUsername().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(
+  public static research.bwsharingapp.proto.kb.ClientInfo parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(
+  public static research.bwsharingapp.proto.kb.ClientInfo parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(
+  public static research.bwsharingapp.proto.kb.ClientInfo parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(
+  public static research.bwsharingapp.proto.kb.ClientInfo parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(byte[] data)
+  public static research.bwsharingapp.proto.kb.ClientInfo parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(
+  public static research.bwsharingapp.proto.kb.ClientInfo parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(java.io.InputStream input)
+  public static research.bwsharingapp.proto.kb.ClientInfo parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(
+  public static research.bwsharingapp.proto.kb.ClientInfo parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseDelimitedFrom(java.io.InputStream input)
+  public static research.bwsharingapp.proto.kb.ClientInfo parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseDelimitedFrom(
+  public static research.bwsharingapp.proto.kb.ClientInfo parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(
+  public static research.bwsharingapp.proto.kb.ClientInfo parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static research.bwsharingapp.proto.kb.TrafficInfo parseFrom(
+  public static research.bwsharingapp.proto.kb.ClientInfo parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -356,7 +328,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(research.bwsharingapp.proto.kb.TrafficInfo prototype) {
+  public static Builder newBuilder(research.bwsharingapp.proto.kb.ClientInfo prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -372,28 +344,28 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * rpc sendRouterIOU -------------------------------------------------------------------------------
+   * rpc clientConnect -------------------------------------------------------------------------------
    * </pre>
    *
-   * Protobuf type {@code kibbutz.TrafficInfo}
+   * Protobuf type {@code kibbutz.ClientInfo}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:kibbutz.TrafficInfo)
-      research.bwsharingapp.proto.kb.TrafficInfoOrBuilder {
+      // @@protoc_insertion_point(builder_implements:kibbutz.ClientInfo)
+      research.bwsharingapp.proto.kb.ClientInfoOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_TrafficInfo_descriptor;
+      return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_ClientInfo_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_TrafficInfo_fieldAccessorTable
+      return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_ClientInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              research.bwsharingapp.proto.kb.TrafficInfo.class, research.bwsharingapp.proto.kb.TrafficInfo.Builder.class);
+              research.bwsharingapp.proto.kb.ClientInfo.class, research.bwsharingapp.proto.kb.ClientInfo.Builder.class);
     }
 
-    // Construct using research.bwsharingapp.proto.kb.TrafficInfo.newBuilder()
+    // Construct using research.bwsharingapp.proto.kb.ClientInfo.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -410,40 +382,37 @@ private static final long serialVersionUID = 0L;
     }
     public Builder clear() {
       super.clear();
-      pkts_ = 0L;
+      clientUsername_ = "";
 
-      bytes_ = 0L;
+      clientPubKey_ = com.google.protobuf.ByteString.EMPTY;
 
-      src_ = "";
-
-      dst_ = "";
+      routerUsername_ = "";
 
       return this;
     }
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_TrafficInfo_descriptor;
+      return research.bwsharingapp.proto.kb.KibbutzProto.internal_static_kibbutz_ClientInfo_descriptor;
     }
 
-    public research.bwsharingapp.proto.kb.TrafficInfo getDefaultInstanceForType() {
-      return research.bwsharingapp.proto.kb.TrafficInfo.getDefaultInstance();
+    public research.bwsharingapp.proto.kb.ClientInfo getDefaultInstanceForType() {
+      return research.bwsharingapp.proto.kb.ClientInfo.getDefaultInstance();
     }
 
-    public research.bwsharingapp.proto.kb.TrafficInfo build() {
-      research.bwsharingapp.proto.kb.TrafficInfo result = buildPartial();
+    public research.bwsharingapp.proto.kb.ClientInfo build() {
+      research.bwsharingapp.proto.kb.ClientInfo result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
       return result;
     }
 
-    public research.bwsharingapp.proto.kb.TrafficInfo buildPartial() {
-      research.bwsharingapp.proto.kb.TrafficInfo result = new research.bwsharingapp.proto.kb.TrafficInfo(this);
-      result.pkts_ = pkts_;
-      result.bytes_ = bytes_;
-      result.src_ = src_;
-      result.dst_ = dst_;
+    public research.bwsharingapp.proto.kb.ClientInfo buildPartial() {
+      research.bwsharingapp.proto.kb.ClientInfo result = new research.bwsharingapp.proto.kb.ClientInfo(this);
+      result.clientUsername_ = clientUsername_;
+      result.clientPubKey_ = clientPubKey_;
+      result.routerUsername_ = routerUsername_;
       onBuilt();
       return result;
     }
@@ -475,28 +444,25 @@ private static final long serialVersionUID = 0L;
       return (Builder) super.addRepeatedField(field, value);
     }
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof research.bwsharingapp.proto.kb.TrafficInfo) {
-        return mergeFrom((research.bwsharingapp.proto.kb.TrafficInfo)other);
+      if (other instanceof research.bwsharingapp.proto.kb.ClientInfo) {
+        return mergeFrom((research.bwsharingapp.proto.kb.ClientInfo)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(research.bwsharingapp.proto.kb.TrafficInfo other) {
-      if (other == research.bwsharingapp.proto.kb.TrafficInfo.getDefaultInstance()) return this;
-      if (other.getPkts() != 0L) {
-        setPkts(other.getPkts());
-      }
-      if (other.getBytes() != 0L) {
-        setBytes(other.getBytes());
-      }
-      if (!other.getSrc().isEmpty()) {
-        src_ = other.src_;
+    public Builder mergeFrom(research.bwsharingapp.proto.kb.ClientInfo other) {
+      if (other == research.bwsharingapp.proto.kb.ClientInfo.getDefaultInstance()) return this;
+      if (!other.getClientUsername().isEmpty()) {
+        clientUsername_ = other.clientUsername_;
         onChanged();
       }
-      if (!other.getDst().isEmpty()) {
-        dst_ = other.dst_;
+      if (other.getClientPubKey() != com.google.protobuf.ByteString.EMPTY) {
+        setClientPubKey(other.getClientPubKey());
+      }
+      if (!other.getRouterUsername().isEmpty()) {
+        routerUsername_ = other.routerUsername_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -512,11 +478,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      research.bwsharingapp.proto.kb.TrafficInfo parsedMessage = null;
+      research.bwsharingapp.proto.kb.ClientInfo parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (research.bwsharingapp.proto.kb.TrafficInfo) e.getUnfinishedMessage();
+        parsedMessage = (research.bwsharingapp.proto.kb.ClientInfo) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -526,192 +492,169 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long pkts_ ;
+    private java.lang.Object clientUsername_ = "";
     /**
-     * <code>int64 pkts = 1;</code>
+     * <code>string clientUsername = 1;</code>
      */
-    public long getPkts() {
-      return pkts_;
-    }
-    /**
-     * <code>int64 pkts = 1;</code>
-     */
-    public Builder setPkts(long value) {
-      
-      pkts_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int64 pkts = 1;</code>
-     */
-    public Builder clearPkts() {
-      
-      pkts_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private long bytes_ ;
-    /**
-     * <code>int64 bytes = 2;</code>
-     */
-    public long getBytes() {
-      return bytes_;
-    }
-    /**
-     * <code>int64 bytes = 2;</code>
-     */
-    public Builder setBytes(long value) {
-      
-      bytes_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int64 bytes = 2;</code>
-     */
-    public Builder clearBytes() {
-      
-      bytes_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object src_ = "";
-    /**
-     * <code>string src = 3;</code>
-     */
-    public java.lang.String getSrc() {
-      java.lang.Object ref = src_;
+    public java.lang.String getClientUsername() {
+      java.lang.Object ref = clientUsername_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        src_ = s;
+        clientUsername_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string src = 3;</code>
+     * <code>string clientUsername = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getSrcBytes() {
-      java.lang.Object ref = src_;
+        getClientUsernameBytes() {
+      java.lang.Object ref = clientUsername_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        src_ = b;
+        clientUsername_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string src = 3;</code>
+     * <code>string clientUsername = 1;</code>
      */
-    public Builder setSrc(
+    public Builder setClientUsername(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      src_ = value;
+      clientUsername_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string src = 3;</code>
+     * <code>string clientUsername = 1;</code>
      */
-    public Builder clearSrc() {
+    public Builder clearClientUsername() {
       
-      src_ = getDefaultInstance().getSrc();
+      clientUsername_ = getDefaultInstance().getClientUsername();
       onChanged();
       return this;
     }
     /**
-     * <code>string src = 3;</code>
+     * <code>string clientUsername = 1;</code>
      */
-    public Builder setSrcBytes(
+    public Builder setClientUsernameBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      src_ = value;
+      clientUsername_ = value;
       onChanged();
       return this;
     }
 
-    private java.lang.Object dst_ = "";
+    private com.google.protobuf.ByteString clientPubKey_ = com.google.protobuf.ByteString.EMPTY;
     /**
-     * <code>string dst = 4;</code>
+     * <code>bytes clientPubKey = 2;</code>
      */
-    public java.lang.String getDst() {
-      java.lang.Object ref = dst_;
+    public com.google.protobuf.ByteString getClientPubKey() {
+      return clientPubKey_;
+    }
+    /**
+     * <code>bytes clientPubKey = 2;</code>
+     */
+    public Builder setClientPubKey(com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      clientPubKey_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>bytes clientPubKey = 2;</code>
+     */
+    public Builder clearClientPubKey() {
+      
+      clientPubKey_ = getDefaultInstance().getClientPubKey();
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object routerUsername_ = "";
+    /**
+     * <code>string routerUsername = 3;</code>
+     */
+    public java.lang.String getRouterUsername() {
+      java.lang.Object ref = routerUsername_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        dst_ = s;
+        routerUsername_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string dst = 4;</code>
+     * <code>string routerUsername = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getDstBytes() {
-      java.lang.Object ref = dst_;
+        getRouterUsernameBytes() {
+      java.lang.Object ref = routerUsername_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        dst_ = b;
+        routerUsername_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string dst = 4;</code>
+     * <code>string routerUsername = 3;</code>
      */
-    public Builder setDst(
+    public Builder setRouterUsername(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      dst_ = value;
+      routerUsername_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string dst = 4;</code>
+     * <code>string routerUsername = 3;</code>
      */
-    public Builder clearDst() {
+    public Builder clearRouterUsername() {
       
-      dst_ = getDefaultInstance().getDst();
+      routerUsername_ = getDefaultInstance().getRouterUsername();
       onChanged();
       return this;
     }
     /**
-     * <code>string dst = 4;</code>
+     * <code>string routerUsername = 3;</code>
      */
-    public Builder setDstBytes(
+    public Builder setRouterUsernameBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      dst_ = value;
+      routerUsername_ = value;
       onChanged();
       return this;
     }
@@ -726,39 +669,39 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:kibbutz.TrafficInfo)
+    // @@protoc_insertion_point(builder_scope:kibbutz.ClientInfo)
   }
 
-  // @@protoc_insertion_point(class_scope:kibbutz.TrafficInfo)
-  private static final research.bwsharingapp.proto.kb.TrafficInfo DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:kibbutz.ClientInfo)
+  private static final research.bwsharingapp.proto.kb.ClientInfo DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new research.bwsharingapp.proto.kb.TrafficInfo();
+    DEFAULT_INSTANCE = new research.bwsharingapp.proto.kb.ClientInfo();
   }
 
-  public static research.bwsharingapp.proto.kb.TrafficInfo getDefaultInstance() {
+  public static research.bwsharingapp.proto.kb.ClientInfo getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<TrafficInfo>
-      PARSER = new com.google.protobuf.AbstractParser<TrafficInfo>() {
-    public TrafficInfo parsePartialFrom(
+  private static final com.google.protobuf.Parser<ClientInfo>
+      PARSER = new com.google.protobuf.AbstractParser<ClientInfo>() {
+    public ClientInfo parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TrafficInfo(input, extensionRegistry);
+        return new ClientInfo(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<TrafficInfo> parser() {
+  public static com.google.protobuf.Parser<ClientInfo> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<TrafficInfo> getParserForType() {
+  public com.google.protobuf.Parser<ClientInfo> getParserForType() {
     return PARSER;
   }
 
-  public research.bwsharingapp.proto.kb.TrafficInfo getDefaultInstanceForType() {
+  public research.bwsharingapp.proto.kb.ClientInfo getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

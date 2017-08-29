@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private RouterIOU() {
-    sign_ = "";
+    nonce_ = com.google.protobuf.ByteString.EMPTY;
   }
 
   @java.lang.Override
@@ -74,22 +74,21 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
+            research.bwsharingapp.proto.kb.ClientIOUSigned.Builder subBuilder = null;
+            if (clientIouSigned_ != null) {
+              subBuilder = clientIouSigned_.toBuilder();
+            }
+            clientIouSigned_ = input.readMessage(research.bwsharingapp.proto.kb.ClientIOUSigned.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(clientIouSigned_);
+              clientIouSigned_ = subBuilder.buildPartial();
+            }
 
-            sign_ = s;
             break;
           }
           case 34: {
-            research.bwsharingapp.proto.kb.ClientIOU.Builder subBuilder = null;
-            if (clientIou_ != null) {
-              subBuilder = clientIou_.toBuilder();
-            }
-            clientIou_ = input.readMessage(research.bwsharingapp.proto.kb.ClientIOU.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(clientIou_);
-              clientIou_ = subBuilder.buildPartial();
-            }
 
+            nonce_ = input.readBytes();
             break;
           }
         }
@@ -158,59 +157,34 @@ private static final long serialVersionUID = 0L;
     return getOut();
   }
 
-  public static final int SIGN_FIELD_NUMBER = 3;
-  private volatile java.lang.Object sign_;
+  public static final int CLIENTIOUSIGNED_FIELD_NUMBER = 3;
+  private research.bwsharingapp.proto.kb.ClientIOUSigned clientIouSigned_;
   /**
-   * <code>string sign = 3;</code>
+   * <code>.kibbutz.ClientIOUSigned clientIouSigned = 3;</code>
    */
-  public java.lang.String getSign() {
-    java.lang.Object ref = sign_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      sign_ = s;
-      return s;
-    }
+  public boolean hasClientIouSigned() {
+    return clientIouSigned_ != null;
   }
   /**
-   * <code>string sign = 3;</code>
+   * <code>.kibbutz.ClientIOUSigned clientIouSigned = 3;</code>
    */
-  public com.google.protobuf.ByteString
-      getSignBytes() {
-    java.lang.Object ref = sign_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      sign_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public research.bwsharingapp.proto.kb.ClientIOUSigned getClientIouSigned() {
+    return clientIouSigned_ == null ? research.bwsharingapp.proto.kb.ClientIOUSigned.getDefaultInstance() : clientIouSigned_;
+  }
+  /**
+   * <code>.kibbutz.ClientIOUSigned clientIouSigned = 3;</code>
+   */
+  public research.bwsharingapp.proto.kb.ClientIOUSignedOrBuilder getClientIouSignedOrBuilder() {
+    return getClientIouSigned();
   }
 
-  public static final int CLIENTIOU_FIELD_NUMBER = 4;
-  private research.bwsharingapp.proto.kb.ClientIOU clientIou_;
+  public static final int NONCE_FIELD_NUMBER = 4;
+  private com.google.protobuf.ByteString nonce_;
   /**
-   * <code>.kibbutz.ClientIOU clientIou = 4;</code>
+   * <code>bytes nonce = 4;</code>
    */
-  public boolean hasClientIou() {
-    return clientIou_ != null;
-  }
-  /**
-   * <code>.kibbutz.ClientIOU clientIou = 4;</code>
-   */
-  public research.bwsharingapp.proto.kb.ClientIOU getClientIou() {
-    return clientIou_ == null ? research.bwsharingapp.proto.kb.ClientIOU.getDefaultInstance() : clientIou_;
-  }
-  /**
-   * <code>.kibbutz.ClientIOU clientIou = 4;</code>
-   */
-  public research.bwsharingapp.proto.kb.ClientIOUOrBuilder getClientIouOrBuilder() {
-    return getClientIou();
+  public com.google.protobuf.ByteString getNonce() {
+    return nonce_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -231,11 +205,11 @@ private static final long serialVersionUID = 0L;
     if (out_ != null) {
       output.writeMessage(2, getOut());
     }
-    if (!getSignBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, sign_);
+    if (clientIouSigned_ != null) {
+      output.writeMessage(3, getClientIouSigned());
     }
-    if (clientIou_ != null) {
-      output.writeMessage(4, getClientIou());
+    if (!nonce_.isEmpty()) {
+      output.writeBytes(4, nonce_);
     }
     unknownFields.writeTo(output);
   }
@@ -253,12 +227,13 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, getOut());
     }
-    if (!getSignBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, sign_);
-    }
-    if (clientIou_ != null) {
+    if (clientIouSigned_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, getClientIou());
+        .computeMessageSize(3, getClientIouSigned());
+    }
+    if (!nonce_.isEmpty()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBytesSize(4, nonce_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -286,13 +261,13 @@ private static final long serialVersionUID = 0L;
       result = result && getOut()
           .equals(other.getOut());
     }
-    result = result && getSign()
-        .equals(other.getSign());
-    result = result && (hasClientIou() == other.hasClientIou());
-    if (hasClientIou()) {
-      result = result && getClientIou()
-          .equals(other.getClientIou());
+    result = result && (hasClientIouSigned() == other.hasClientIouSigned());
+    if (hasClientIouSigned()) {
+      result = result && getClientIouSigned()
+          .equals(other.getClientIouSigned());
     }
+    result = result && getNonce()
+        .equals(other.getNonce());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -312,12 +287,12 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + OUT_FIELD_NUMBER;
       hash = (53 * hash) + getOut().hashCode();
     }
-    hash = (37 * hash) + SIGN_FIELD_NUMBER;
-    hash = (53 * hash) + getSign().hashCode();
-    if (hasClientIou()) {
-      hash = (37 * hash) + CLIENTIOU_FIELD_NUMBER;
-      hash = (53 * hash) + getClientIou().hashCode();
+    if (hasClientIouSigned()) {
+      hash = (37 * hash) + CLIENTIOUSIGNED_FIELD_NUMBER;
+      hash = (53 * hash) + getClientIouSigned().hashCode();
     }
+    hash = (37 * hash) + NONCE_FIELD_NUMBER;
+    hash = (53 * hash) + getNonce().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -459,14 +434,14 @@ private static final long serialVersionUID = 0L;
         out_ = null;
         outBuilder_ = null;
       }
-      sign_ = "";
-
-      if (clientIouBuilder_ == null) {
-        clientIou_ = null;
+      if (clientIouSignedBuilder_ == null) {
+        clientIouSigned_ = null;
       } else {
-        clientIou_ = null;
-        clientIouBuilder_ = null;
+        clientIouSigned_ = null;
+        clientIouSignedBuilder_ = null;
       }
+      nonce_ = com.google.protobuf.ByteString.EMPTY;
+
       return this;
     }
 
@@ -499,12 +474,12 @@ private static final long serialVersionUID = 0L;
       } else {
         result.out_ = outBuilder_.build();
       }
-      result.sign_ = sign_;
-      if (clientIouBuilder_ == null) {
-        result.clientIou_ = clientIou_;
+      if (clientIouSignedBuilder_ == null) {
+        result.clientIouSigned_ = clientIouSigned_;
       } else {
-        result.clientIou_ = clientIouBuilder_.build();
+        result.clientIouSigned_ = clientIouSignedBuilder_.build();
       }
+      result.nonce_ = nonce_;
       onBuilt();
       return result;
     }
@@ -552,12 +527,11 @@ private static final long serialVersionUID = 0L;
       if (other.hasOut()) {
         mergeOut(other.getOut());
       }
-      if (!other.getSign().isEmpty()) {
-        sign_ = other.sign_;
-        onChanged();
+      if (other.hasClientIouSigned()) {
+        mergeClientIouSigned(other.getClientIouSigned());
       }
-      if (other.hasClientIou()) {
-        mergeClientIou(other.getClientIou());
+      if (other.getNonce() != com.google.protobuf.ByteString.EMPTY) {
+        setNonce(other.getNonce());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -820,190 +794,150 @@ private static final long serialVersionUID = 0L;
       return outBuilder_;
     }
 
-    private java.lang.Object sign_ = "";
+    private research.bwsharingapp.proto.kb.ClientIOUSigned clientIouSigned_ = null;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        research.bwsharingapp.proto.kb.ClientIOUSigned, research.bwsharingapp.proto.kb.ClientIOUSigned.Builder, research.bwsharingapp.proto.kb.ClientIOUSignedOrBuilder> clientIouSignedBuilder_;
     /**
-     * <code>string sign = 3;</code>
+     * <code>.kibbutz.ClientIOUSigned clientIouSigned = 3;</code>
      */
-    public java.lang.String getSign() {
-      java.lang.Object ref = sign_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        sign_ = s;
-        return s;
+    public boolean hasClientIouSigned() {
+      return clientIouSignedBuilder_ != null || clientIouSigned_ != null;
+    }
+    /**
+     * <code>.kibbutz.ClientIOUSigned clientIouSigned = 3;</code>
+     */
+    public research.bwsharingapp.proto.kb.ClientIOUSigned getClientIouSigned() {
+      if (clientIouSignedBuilder_ == null) {
+        return clientIouSigned_ == null ? research.bwsharingapp.proto.kb.ClientIOUSigned.getDefaultInstance() : clientIouSigned_;
       } else {
-        return (java.lang.String) ref;
+        return clientIouSignedBuilder_.getMessage();
       }
     }
     /**
-     * <code>string sign = 3;</code>
+     * <code>.kibbutz.ClientIOUSigned clientIouSigned = 3;</code>
      */
-    public com.google.protobuf.ByteString
-        getSignBytes() {
-      java.lang.Object ref = sign_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        sign_ = b;
-        return b;
+    public Builder setClientIouSigned(research.bwsharingapp.proto.kb.ClientIOUSigned value) {
+      if (clientIouSignedBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        clientIouSigned_ = value;
+        onChanged();
       } else {
-        return (com.google.protobuf.ByteString) ref;
+        clientIouSignedBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.kibbutz.ClientIOUSigned clientIouSigned = 3;</code>
+     */
+    public Builder setClientIouSigned(
+        research.bwsharingapp.proto.kb.ClientIOUSigned.Builder builderForValue) {
+      if (clientIouSignedBuilder_ == null) {
+        clientIouSigned_ = builderForValue.build();
+        onChanged();
+      } else {
+        clientIouSignedBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.kibbutz.ClientIOUSigned clientIouSigned = 3;</code>
+     */
+    public Builder mergeClientIouSigned(research.bwsharingapp.proto.kb.ClientIOUSigned value) {
+      if (clientIouSignedBuilder_ == null) {
+        if (clientIouSigned_ != null) {
+          clientIouSigned_ =
+            research.bwsharingapp.proto.kb.ClientIOUSigned.newBuilder(clientIouSigned_).mergeFrom(value).buildPartial();
+        } else {
+          clientIouSigned_ = value;
+        }
+        onChanged();
+      } else {
+        clientIouSignedBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.kibbutz.ClientIOUSigned clientIouSigned = 3;</code>
+     */
+    public Builder clearClientIouSigned() {
+      if (clientIouSignedBuilder_ == null) {
+        clientIouSigned_ = null;
+        onChanged();
+      } else {
+        clientIouSigned_ = null;
+        clientIouSignedBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.kibbutz.ClientIOUSigned clientIouSigned = 3;</code>
+     */
+    public research.bwsharingapp.proto.kb.ClientIOUSigned.Builder getClientIouSignedBuilder() {
+      
+      onChanged();
+      return getClientIouSignedFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.kibbutz.ClientIOUSigned clientIouSigned = 3;</code>
+     */
+    public research.bwsharingapp.proto.kb.ClientIOUSignedOrBuilder getClientIouSignedOrBuilder() {
+      if (clientIouSignedBuilder_ != null) {
+        return clientIouSignedBuilder_.getMessageOrBuilder();
+      } else {
+        return clientIouSigned_ == null ?
+            research.bwsharingapp.proto.kb.ClientIOUSigned.getDefaultInstance() : clientIouSigned_;
       }
     }
     /**
-     * <code>string sign = 3;</code>
+     * <code>.kibbutz.ClientIOUSigned clientIouSigned = 3;</code>
      */
-    public Builder setSign(
-        java.lang.String value) {
+    private com.google.protobuf.SingleFieldBuilderV3<
+        research.bwsharingapp.proto.kb.ClientIOUSigned, research.bwsharingapp.proto.kb.ClientIOUSigned.Builder, research.bwsharingapp.proto.kb.ClientIOUSignedOrBuilder> 
+        getClientIouSignedFieldBuilder() {
+      if (clientIouSignedBuilder_ == null) {
+        clientIouSignedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            research.bwsharingapp.proto.kb.ClientIOUSigned, research.bwsharingapp.proto.kb.ClientIOUSigned.Builder, research.bwsharingapp.proto.kb.ClientIOUSignedOrBuilder>(
+                getClientIouSigned(),
+                getParentForChildren(),
+                isClean());
+        clientIouSigned_ = null;
+      }
+      return clientIouSignedBuilder_;
+    }
+
+    private com.google.protobuf.ByteString nonce_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <code>bytes nonce = 4;</code>
+     */
+    public com.google.protobuf.ByteString getNonce() {
+      return nonce_;
+    }
+    /**
+     * <code>bytes nonce = 4;</code>
+     */
+    public Builder setNonce(com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      sign_ = value;
+      nonce_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string sign = 3;</code>
+     * <code>bytes nonce = 4;</code>
      */
-    public Builder clearSign() {
+    public Builder clearNonce() {
       
-      sign_ = getDefaultInstance().getSign();
+      nonce_ = getDefaultInstance().getNonce();
       onChanged();
       return this;
-    }
-    /**
-     * <code>string sign = 3;</code>
-     */
-    public Builder setSignBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      sign_ = value;
-      onChanged();
-      return this;
-    }
-
-    private research.bwsharingapp.proto.kb.ClientIOU clientIou_ = null;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        research.bwsharingapp.proto.kb.ClientIOU, research.bwsharingapp.proto.kb.ClientIOU.Builder, research.bwsharingapp.proto.kb.ClientIOUOrBuilder> clientIouBuilder_;
-    /**
-     * <code>.kibbutz.ClientIOU clientIou = 4;</code>
-     */
-    public boolean hasClientIou() {
-      return clientIouBuilder_ != null || clientIou_ != null;
-    }
-    /**
-     * <code>.kibbutz.ClientIOU clientIou = 4;</code>
-     */
-    public research.bwsharingapp.proto.kb.ClientIOU getClientIou() {
-      if (clientIouBuilder_ == null) {
-        return clientIou_ == null ? research.bwsharingapp.proto.kb.ClientIOU.getDefaultInstance() : clientIou_;
-      } else {
-        return clientIouBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>.kibbutz.ClientIOU clientIou = 4;</code>
-     */
-    public Builder setClientIou(research.bwsharingapp.proto.kb.ClientIOU value) {
-      if (clientIouBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        clientIou_ = value;
-        onChanged();
-      } else {
-        clientIouBuilder_.setMessage(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.kibbutz.ClientIOU clientIou = 4;</code>
-     */
-    public Builder setClientIou(
-        research.bwsharingapp.proto.kb.ClientIOU.Builder builderForValue) {
-      if (clientIouBuilder_ == null) {
-        clientIou_ = builderForValue.build();
-        onChanged();
-      } else {
-        clientIouBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     * <code>.kibbutz.ClientIOU clientIou = 4;</code>
-     */
-    public Builder mergeClientIou(research.bwsharingapp.proto.kb.ClientIOU value) {
-      if (clientIouBuilder_ == null) {
-        if (clientIou_ != null) {
-          clientIou_ =
-            research.bwsharingapp.proto.kb.ClientIOU.newBuilder(clientIou_).mergeFrom(value).buildPartial();
-        } else {
-          clientIou_ = value;
-        }
-        onChanged();
-      } else {
-        clientIouBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.kibbutz.ClientIOU clientIou = 4;</code>
-     */
-    public Builder clearClientIou() {
-      if (clientIouBuilder_ == null) {
-        clientIou_ = null;
-        onChanged();
-      } else {
-        clientIou_ = null;
-        clientIouBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.kibbutz.ClientIOU clientIou = 4;</code>
-     */
-    public research.bwsharingapp.proto.kb.ClientIOU.Builder getClientIouBuilder() {
-      
-      onChanged();
-      return getClientIouFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.kibbutz.ClientIOU clientIou = 4;</code>
-     */
-    public research.bwsharingapp.proto.kb.ClientIOUOrBuilder getClientIouOrBuilder() {
-      if (clientIouBuilder_ != null) {
-        return clientIouBuilder_.getMessageOrBuilder();
-      } else {
-        return clientIou_ == null ?
-            research.bwsharingapp.proto.kb.ClientIOU.getDefaultInstance() : clientIou_;
-      }
-    }
-    /**
-     * <code>.kibbutz.ClientIOU clientIou = 4;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        research.bwsharingapp.proto.kb.ClientIOU, research.bwsharingapp.proto.kb.ClientIOU.Builder, research.bwsharingapp.proto.kb.ClientIOUOrBuilder> 
-        getClientIouFieldBuilder() {
-      if (clientIouBuilder_ == null) {
-        clientIouBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            research.bwsharingapp.proto.kb.ClientIOU, research.bwsharingapp.proto.kb.ClientIOU.Builder, research.bwsharingapp.proto.kb.ClientIOUOrBuilder>(
-                getClientIou(),
-                getParentForChildren(),
-                isClean());
-        clientIou_ = null;
-      }
-      return clientIouBuilder_;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {

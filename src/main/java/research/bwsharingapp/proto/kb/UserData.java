@@ -4,6 +4,10 @@
 package research.bwsharingapp.proto.kb;
 
 /**
+ * <pre>
+ * rpc registerUser --------------------------------------------------------------------------------
+ * </pre>
+ *
  * Protobuf type {@code kibbutz.UserData}
  */
 public  final class UserData extends
@@ -339,6 +343,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * rpc registerUser --------------------------------------------------------------------------------
+   * </pre>
+   *
    * Protobuf type {@code kibbutz.UserData}
    */
   public static final class Builder extends

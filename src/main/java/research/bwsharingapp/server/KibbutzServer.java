@@ -10,8 +10,8 @@ public class KibbutzServer extends KibbutzGrpc.KibbutzImplBase {
     private static final Logger log = Logger.getLogger(KibbutzServer.class.getName());
 
     @Override
-    public void sendRouterIOU(RouterIOU request, StreamObserver<RouterIOUReply> responseObserver) {
-        printRouterIou(request);
+    public void sendRouterIOU(RouterIOUSigned request, StreamObserver<RouterIOUReply> responseObserver) {
+        printRouterIou(request.getRouterIou());
 
         RouterIOUReply reply = RouterIOUReply.newBuilder().setStatusCode(0).setIsValid(true).build();
         responseObserver.onNext(reply);
@@ -27,9 +27,19 @@ public class KibbutzServer extends KibbutzGrpc.KibbutzImplBase {
         responseObserver.onCompleted();
     }
 
+    @Override
+    public void clientConnect(ClientInfo request, StreamObserver<ClientConnectReply> responseObserver) {
+        log.info("clientConnect: client:" + request.getClientUsername() + ", router: " + request.getRouterUsername());
+
+        ClientConnectReply reply = KibbutzAL.clientConnect(request);
+        responseObserver.onNext(reply);
+        responseObserver.onCompleted();
+    }
+
     private void printRouterIou(RouterIOU request) {
         log.info("Recv request:");
-        log.info("client: " + request.getClientIou().getIn().getBytes() + "\t\t" + request.getClientIou().getOut().getBytes());
+        log.info("client: " + request.getClientIouSigned().getClientIOU().getIn().getBytes() + "\t\t"
+                + request.getClientIouSigned().getClientIOU().getOut().getBytes());
         log.info("router: " + request.getIn().getBytes() + "\t\t" + request.getOut().getBytes());
     }
 }

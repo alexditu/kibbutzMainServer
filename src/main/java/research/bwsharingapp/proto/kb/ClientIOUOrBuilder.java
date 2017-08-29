@@ -34,14 +34,14 @@ public interface ClientIOUOrBuilder extends
   research.bwsharingapp.proto.kb.TrafficInfoOrBuilder getOutOrBuilder();
 
   /**
-   * <code>string client = 3;</code>
+   * <code>string clientUsername = 3;</code>
    */
-  java.lang.String getClient();
+  java.lang.String getClientUsername();
   /**
-   * <code>string client = 3;</code>
+   * <code>string clientUsername = 3;</code>
    */
   com.google.protobuf.ByteString
-      getClientBytes();
+      getClientUsernameBytes();
 
   /**
    * <code>string server = 4;</code>
@@ -54,12 +54,7 @@ public interface ClientIOUOrBuilder extends
       getServerBytes();
 
   /**
-   * <code>string sign = 5;</code>
+   * <code>bytes nonce = 5;</code>
    */
-  java.lang.String getSign();
-  /**
-   * <code>string sign = 5;</code>
-   */
-  com.google.protobuf.ByteString
-      getSignBytes();
+  com.google.protobuf.ByteString getNonce();
 }

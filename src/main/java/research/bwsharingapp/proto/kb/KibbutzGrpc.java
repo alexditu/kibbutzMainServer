@@ -16,9 +16,6 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 
 /**
- * <pre>
- * The greeting service definition.
- * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.4.0)",
@@ -31,14 +28,14 @@ public final class KibbutzGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<research.bwsharingapp.proto.kb.RouterIOU,
+  public static final io.grpc.MethodDescriptor<research.bwsharingapp.proto.kb.RouterIOUSigned,
       research.bwsharingapp.proto.kb.RouterIOUReply> METHOD_SEND_ROUTER_IOU =
-      io.grpc.MethodDescriptor.<research.bwsharingapp.proto.kb.RouterIOU, research.bwsharingapp.proto.kb.RouterIOUReply>newBuilder()
+      io.grpc.MethodDescriptor.<research.bwsharingapp.proto.kb.RouterIOUSigned, research.bwsharingapp.proto.kb.RouterIOUReply>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
               "kibbutz.Kibbutz", "sendRouterIOU"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              research.bwsharingapp.proto.kb.RouterIOU.getDefaultInstance()))
+              research.bwsharingapp.proto.kb.RouterIOUSigned.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               research.bwsharingapp.proto.kb.RouterIOUReply.getDefaultInstance()))
           .build();
@@ -53,6 +50,18 @@ public final class KibbutzGrpc {
               research.bwsharingapp.proto.kb.UserData.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               research.bwsharingapp.proto.kb.RegisterUserReply.getDefaultInstance()))
+          .build();
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<research.bwsharingapp.proto.kb.ClientInfo,
+      research.bwsharingapp.proto.kb.ClientConnectReply> METHOD_CLIENT_CONNECT =
+      io.grpc.MethodDescriptor.<research.bwsharingapp.proto.kb.ClientInfo, research.bwsharingapp.proto.kb.ClientConnectReply>newBuilder()
+          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+          .setFullMethodName(generateFullMethodName(
+              "kibbutz.Kibbutz", "clientConnect"))
+          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              research.bwsharingapp.proto.kb.ClientInfo.getDefaultInstance()))
+          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              research.bwsharingapp.proto.kb.ClientConnectReply.getDefaultInstance()))
           .build();
 
   /**
@@ -79,18 +88,12 @@ public final class KibbutzGrpc {
   }
 
   /**
-   * <pre>
-   * The greeting service definition.
-   * </pre>
    */
   public static abstract class KibbutzImplBase implements io.grpc.BindableService {
 
     /**
-     * <pre>
-     * Sends a greeting
-     * </pre>
      */
-    public void sendRouterIOU(research.bwsharingapp.proto.kb.RouterIOU request,
+    public void sendRouterIOU(research.bwsharingapp.proto.kb.RouterIOUSigned request,
         io.grpc.stub.StreamObserver<research.bwsharingapp.proto.kb.RouterIOUReply> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_SEND_ROUTER_IOU, responseObserver);
     }
@@ -102,13 +105,20 @@ public final class KibbutzGrpc {
       asyncUnimplementedUnaryCall(METHOD_REGISTER_USER, responseObserver);
     }
 
+    /**
+     */
+    public void clientConnect(research.bwsharingapp.proto.kb.ClientInfo request,
+        io.grpc.stub.StreamObserver<research.bwsharingapp.proto.kb.ClientConnectReply> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_CLIENT_CONNECT, responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
             METHOD_SEND_ROUTER_IOU,
             asyncUnaryCall(
               new MethodHandlers<
-                research.bwsharingapp.proto.kb.RouterIOU,
+                research.bwsharingapp.proto.kb.RouterIOUSigned,
                 research.bwsharingapp.proto.kb.RouterIOUReply>(
                   this, METHODID_SEND_ROUTER_IOU)))
           .addMethod(
@@ -118,14 +128,18 @@ public final class KibbutzGrpc {
                 research.bwsharingapp.proto.kb.UserData,
                 research.bwsharingapp.proto.kb.RegisterUserReply>(
                   this, METHODID_REGISTER_USER)))
+          .addMethod(
+            METHOD_CLIENT_CONNECT,
+            asyncUnaryCall(
+              new MethodHandlers<
+                research.bwsharingapp.proto.kb.ClientInfo,
+                research.bwsharingapp.proto.kb.ClientConnectReply>(
+                  this, METHODID_CLIENT_CONNECT)))
           .build();
     }
   }
 
   /**
-   * <pre>
-   * The greeting service definition.
-   * </pre>
    */
   public static final class KibbutzStub extends io.grpc.stub.AbstractStub<KibbutzStub> {
     private KibbutzStub(io.grpc.Channel channel) {
@@ -144,11 +158,8 @@ public final class KibbutzGrpc {
     }
 
     /**
-     * <pre>
-     * Sends a greeting
-     * </pre>
      */
-    public void sendRouterIOU(research.bwsharingapp.proto.kb.RouterIOU request,
+    public void sendRouterIOU(research.bwsharingapp.proto.kb.RouterIOUSigned request,
         io.grpc.stub.StreamObserver<research.bwsharingapp.proto.kb.RouterIOUReply> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(METHOD_SEND_ROUTER_IOU, getCallOptions()), request, responseObserver);
@@ -161,12 +172,17 @@ public final class KibbutzGrpc {
       asyncUnaryCall(
           getChannel().newCall(METHOD_REGISTER_USER, getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void clientConnect(research.bwsharingapp.proto.kb.ClientInfo request,
+        io.grpc.stub.StreamObserver<research.bwsharingapp.proto.kb.ClientConnectReply> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_CLIENT_CONNECT, getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
-   * <pre>
-   * The greeting service definition.
-   * </pre>
    */
   public static final class KibbutzBlockingStub extends io.grpc.stub.AbstractStub<KibbutzBlockingStub> {
     private KibbutzBlockingStub(io.grpc.Channel channel) {
@@ -185,11 +201,8 @@ public final class KibbutzGrpc {
     }
 
     /**
-     * <pre>
-     * Sends a greeting
-     * </pre>
      */
-    public research.bwsharingapp.proto.kb.RouterIOUReply sendRouterIOU(research.bwsharingapp.proto.kb.RouterIOU request) {
+    public research.bwsharingapp.proto.kb.RouterIOUReply sendRouterIOU(research.bwsharingapp.proto.kb.RouterIOUSigned request) {
       return blockingUnaryCall(
           getChannel(), METHOD_SEND_ROUTER_IOU, getCallOptions(), request);
     }
@@ -200,12 +213,16 @@ public final class KibbutzGrpc {
       return blockingUnaryCall(
           getChannel(), METHOD_REGISTER_USER, getCallOptions(), request);
     }
+
+    /**
+     */
+    public research.bwsharingapp.proto.kb.ClientConnectReply clientConnect(research.bwsharingapp.proto.kb.ClientInfo request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_CLIENT_CONNECT, getCallOptions(), request);
+    }
   }
 
   /**
-   * <pre>
-   * The greeting service definition.
-   * </pre>
    */
   public static final class KibbutzFutureStub extends io.grpc.stub.AbstractStub<KibbutzFutureStub> {
     private KibbutzFutureStub(io.grpc.Channel channel) {
@@ -224,12 +241,9 @@ public final class KibbutzGrpc {
     }
 
     /**
-     * <pre>
-     * Sends a greeting
-     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<research.bwsharingapp.proto.kb.RouterIOUReply> sendRouterIOU(
-        research.bwsharingapp.proto.kb.RouterIOU request) {
+        research.bwsharingapp.proto.kb.RouterIOUSigned request) {
       return futureUnaryCall(
           getChannel().newCall(METHOD_SEND_ROUTER_IOU, getCallOptions()), request);
     }
@@ -241,10 +255,19 @@ public final class KibbutzGrpc {
       return futureUnaryCall(
           getChannel().newCall(METHOD_REGISTER_USER, getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<research.bwsharingapp.proto.kb.ClientConnectReply> clientConnect(
+        research.bwsharingapp.proto.kb.ClientInfo request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_CLIENT_CONNECT, getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_SEND_ROUTER_IOU = 0;
   private static final int METHODID_REGISTER_USER = 1;
+  private static final int METHODID_CLIENT_CONNECT = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -264,12 +287,16 @@ public final class KibbutzGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_SEND_ROUTER_IOU:
-          serviceImpl.sendRouterIOU((research.bwsharingapp.proto.kb.RouterIOU) request,
+          serviceImpl.sendRouterIOU((research.bwsharingapp.proto.kb.RouterIOUSigned) request,
               (io.grpc.stub.StreamObserver<research.bwsharingapp.proto.kb.RouterIOUReply>) responseObserver);
           break;
         case METHODID_REGISTER_USER:
           serviceImpl.registerUser((research.bwsharingapp.proto.kb.UserData) request,
               (io.grpc.stub.StreamObserver<research.bwsharingapp.proto.kb.RegisterUserReply>) responseObserver);
+          break;
+        case METHODID_CLIENT_CONNECT:
+          serviceImpl.clientConnect((research.bwsharingapp.proto.kb.ClientInfo) request,
+              (io.grpc.stub.StreamObserver<research.bwsharingapp.proto.kb.ClientConnectReply>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -306,6 +333,7 @@ public final class KibbutzGrpc {
               .setSchemaDescriptor(new KibbutzDescriptorSupplier())
               .addMethod(METHOD_SEND_ROUTER_IOU)
               .addMethod(METHOD_REGISTER_USER)
+              .addMethod(METHOD_CLIENT_CONNECT)
               .build();
         }
       }

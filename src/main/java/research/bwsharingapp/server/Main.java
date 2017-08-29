@@ -2,6 +2,7 @@ package research.bwsharingapp.server;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.ServerServiceDefinition;
 import research.bwsharingapp.db.DatabaseConnection;
 
 import java.io.IOException;
